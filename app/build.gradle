@@ -1,0 +1,23 @@
+
+plugins {
+  id "org.jetbrains.kotlin.jvm"
+  id 'com.google.devtools.ksp' version '1.6.20-1.0.4'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation project(':annotation')
+
+    ksp project(':ksp-processor')
+    // KSP deps
+    compileOnly "com.google.devtools.ksp:symbol-processing:1.6.20-1.0.4"
+    compileOnly "com.google.devtools.ksp:symbol-processing-api:1.6.20-1.0.4"
+    compileOnly "org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlin_version"
+}
+
+kotlin {
+    sourceSets {
+        main.kotlin.srcDirs += 'build/generated/ksp/main/kotlin'
+        test.kotlin.srcDirs += 'build/generated/ksp/test/kotlin'
+    }
+}

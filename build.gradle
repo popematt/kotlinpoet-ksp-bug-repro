@@ -1,0 +1,24 @@
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.6.20" apply false
+}
+
+subprojects {
+    ext.kotlin_version = "1.6.20"
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+}

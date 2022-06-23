@@ -1,0 +1,18 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm"
+}
+
+dependencies {
+    implementation project(":annotation")
+    implementation 'com.squareup:kotlinpoet:1.12.0'
+    implementation 'com.squareup:kotlinpoet-metadata:1.12.0'
+    implementation 'com.squareup:kotlinpoet-ksp:1.12.0'
+    // implementation files('../../kotlinpoet/interop/ksp/build/libs/ksp-1.13.0-SNAPSHOT.jar')
+    implementation "com.google.devtools.ksp:symbol-processing-api:1.6.20-1.0.4"
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+}
